@@ -40,3 +40,35 @@ a {
     color-scheme: dark;
   }
 }
+
+.container {
+  text-align: center;
+  margin-top: 100px;
+  font-family: sans-serif;
+}
+
+p {
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+.botoes {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #0070f3;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0059c1;
+}
