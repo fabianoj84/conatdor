@@ -1,8 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const [contador, setContador] = useState(0);
   const [mensagem, setMensagem] = useState("");
+  const [tema, setTema] = useState("claro"); // "claro" | "escuro"
+
+  // Carrega o tema salvo (se houver) ao abrir a página
+  useEffect(() => {
+    const salvo = localStorage.getItem("tema");
+    if (salvo === "claro" || salvo === "escuro") setTema(salvo);
+  }, []);
+
+  // Salva o tema sempre que mudar
+  useEffect(() => {
+    localStorage.setItem("tema", tema);
+  }, [tema]);
 
   const aumentar = () => {
     if (contador >= 10) {
@@ -27,18 +39,30 @@ export default function Home() {
     setMensagem("");
   };
 
+  const alternarTema = () => {
+    setTema((t) => (t === "claro" ? "escuro" : "claro"));
+  };
+
   return (
-    <div className="container">
-      <h1>Meu Contador</h1>
-      <p>Valor atual: {contador}</p>
+    <div className={`app ${tema === "escuro" ? "tema-escuro" : "tema-claro"}`}>
+      <header className="topbar">
+        <h1>Meu Contador</h1>
+        <button className="toggle" onClick={alternarTema}>
+          {tema === "escuro" ? "☀️ Claro" : "🌙 Escuro"}
+        </button>
+      </header>
 
-      {mensagem && <p style={{ color: "red" }}>{mensagem}</p>}
+      <main className="container">
+        <p className="valor">Valor atual: {contador}</p>
 
-      <div className="botoes">
-        <button onClick={aumentar}>+ Aumentar</button>
-        <button onClick={diminuir}>- Diminuir</button>
-        <button onClick={zerar}>⭮ Zerar</button>
-      </div>
+        {mensagem && <p className="aviso">{mensagem}</p>}
+
+        <div className="botoes">
+          <button onClick={aumentar}>+ Aumentar</button>
+          <button onClick={diminuir}>- Diminuir</button>
+          <button onClick={zerar}>⭮ Zerar</button>
+        </div>
+      </main>
     </div>
   );
 }

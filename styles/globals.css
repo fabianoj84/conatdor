@@ -1,44 +1,84 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Layout básico do app + temas */
+.app {
+  min-height: 100vh;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.tema-claro {
+  background-color: #f6f7fb;
+  color: #111;
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+.tema-escuro {
+  background-color: #0f172a; /* azul bem escuro */
+  color: #e5e7eb; /* cinza claro */
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Topbar com botão de tema */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+.toggle {
+  padding: 8px 12px;
+  border: 1px solid currentColor;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* Conteúdo principal */
+.container {
+  text-align: center;
+  margin-top: 60px;
+  font-family: sans-serif;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 16px;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.valor {
+  font-size: 28px;
+  margin: 20px 0;
+}
+
+.botoes {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 10px 18px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #0070f3;
+  color: white;
+  border-radius: 8px;
+  transition: transform 0.05s ease, background-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+button:hover {
+  background-color: #0059c1;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+.aviso {
+  color: #ef4444; /* vermelho */
+  font-weight: 600;
+  margin-bottom: 8px;
 }
 
 .container {
